@@ -56,7 +56,7 @@ function App() {
     // create an array of latters
     let wordLetters = word.split("");
 
-    wordLetters = wordLetters.map((x) => x.toLowerCase());
+    wordLetters = wordLetters.map((l) => l.toLowerCase());
 
     console.log(word, category);
     console.log(wordLetters);
@@ -64,14 +64,14 @@ function App() {
     // fill states
     setPickedWord(word);
     setPickedCategory(category);
-    setLetters(letters);
+    setLetters(wordLetters);
 
     setGameStage(stages[1].name);
   };
 
   // process the letter input
-  const verifyLetter = () => {
-    setGameStage(stages[2].name);
+  const verifyLetter = (letter) => {
+    console.log(letter);
   };
 
   // ReStart the game
