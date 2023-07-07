@@ -33,7 +33,7 @@ function App() {
   const [guessed, setGuesses] = useState(guessesQty);
   const [score, setScore] = useState(0);
 
-  const pickWordAndCategory = () => {
+  const pickWordAndCategory = useCallback(() => {
     // pick a random category
     const categories = Object.keys(words);
     const category =
@@ -48,10 +48,12 @@ function App() {
     console.log(word);
 
     return { word, category };
-  };
+  }, [words]);
 
   // Starts the secret word game
-  const startGame = () => {
+  const startGame = useCallback(() => {
+    clearLetterStates();
+
     //pick word and pick category
     const { word, category } = pickWordAndCategory();
 
@@ -69,7 +71,7 @@ function App() {
     setLetters(wordLetters);
 
     setGameStage(stages[1].name);
-  };
+  }, [pickWordAndCategory]);
 
   // process the letter input
   const verifyLetter = (letter) => {
@@ -113,6 +115,16 @@ function App() {
     }
   }, [guessed]);
 
+  useEffect(() => {
+    const uniqueLetters = [...new Set(letters)];
+
+    if (guessedLetters.length === uniqueLetters.length) {
+      setScore((actualScore) => (actualScore += 100));
+
+      startGame();
+    }
+  }, [guessedLetters, letters]);
+
   // ReStart the game
   const retry = () => {
     setScore(0);
@@ -136,7 +148,7 @@ function App() {
           score={score}
         />
       )}
-      {gameStage === "end" && <GameOver retry={retry} />}
+      {gameStage === "end" && <GameOver retry={retry} score={score} />}
     </div>
   );
 }
