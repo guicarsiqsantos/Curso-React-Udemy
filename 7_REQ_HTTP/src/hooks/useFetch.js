@@ -18,6 +18,8 @@ export const useFetch = (url) => {
         },
         body: JSON.stringify(data),
       });
+
+      setMethod(method);
     }
   };
 
@@ -47,7 +49,7 @@ export const useFetch = (url) => {
       }
     };
     httpRequest();
-  }, [config]);
+  }, [config, method, url]);
 
   return { data, httpConfig };
 };

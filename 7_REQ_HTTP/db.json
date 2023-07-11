@@ -34,6 +34,11 @@
       "name": "cadeira",
       "price": "200",
       "id": 7
+    },
+    {
+      "name": "mouse",
+      "price": "60",
+      "id": 8
     }
   ]
 }
