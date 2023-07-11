@@ -14,6 +14,26 @@
       "id": 3,
       "name": "Boné aba reta",
       "price": 29.9
+    },
+    {
+      "name": "teste",
+      "price": "12",
+      "id": 4
+    },
+    {
+      "name": "Capa de Chuva",
+      "price": "50.50",
+      "id": 5
+    },
+    {
+      "name": "teclado ",
+      "price": "110",
+      "id": 6
+    },
+    {
+      "name": "cadeira",
+      "price": "200",
+      "id": 7
     }
   ]
 }
