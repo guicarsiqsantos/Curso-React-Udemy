@@ -4,17 +4,21 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import Home from "./pages/Home/home";
 import About from "./pages/About/About";
+import Navbar from "./Components/Navbar";
+import Fotter from "./Components/Fotter";
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <div>
+        <Navbar />
+        <div className="container">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/About" element={<About />} />
+            <Route path="/about" element={<About />} />
           </Routes>
         </div>
+        <Fotter />
       </BrowserRouter>
     </div>
   );
